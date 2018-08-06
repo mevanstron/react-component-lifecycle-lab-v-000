@@ -30,12 +30,24 @@ class App extends React.Component {
     });
   }
 
+  componentWillMount() {
+    this.fetchTweets();
+  }
+
   render() {
     return (
       <div>
         <TweetWall newTweets={this.state.latestTweets} />
       </div>
     )
+  }
+
+  componentDidMount() {
+    this.startInterval();
+  }
+
+  componentWillUnmount() {
+    this.cleanUpInterval();
   }
 }
 
